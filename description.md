@@ -28,3 +28,19 @@ If either the player or the banker has a total of an 8 or a 9 they both stand.
 There is no exceptions and this rule overrides all other rules
 
 If both player(gameRobot) and bank are dealt identical hands, it is a a tie.
+
+
+MVPS:
+1. build deck
+2. player picks side 
+3. deal cards 
+4. calc total
+5. see if 3rd card needs to be drawn
+6. determin winner 
+7. basic card animations 
+
+Post MVPs:
+1. record history of last 10 games 
+2. bet with money
+3. prop bets?
+4. advanced card animations 
