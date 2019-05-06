@@ -31,16 +31,17 @@ If both player(gameRobot) and bank are dealt identical hands, it is a a tie.
 
 
 MVPS:
-1. build deck
-2. player picks side 
-3. deal cards 
-4. calc total
-5. see if 3rd card needs to be drawn
-6. determin winner 
-7. basic card animations 
+1. build deck -1h
+2. player picks side -1h
+3. build deck - 1h
+4. deal cards -2h
+5. calc total - 2h
+6. see if 3rd card needs to be drawn-3h
+7. determin winner -2h
+8. basic card animations 3hr
 
 Post MVPs:
-1. record history of last 10 games 
-2. bet with money
-3. prop bets?
-4. advanced card animations 
+1. record history of last 10 games - 3h 
+2. bet with money -5h
+3. prop bets? -3h
+4. advanced card animations -3h 
