@@ -39,9 +39,10 @@ MVPS:
 6. see if 3rd card needs to be drawn-3h
 7. determin winner -2h
 8. basic card animations 3hr
+2. bet with money -5h
 
 Post MVPs:
 1. record history of last 10 games - 3h 
-2. bet with money -5h
+
 3. prop bets? -3h
 4. advanced card animations -3h 
