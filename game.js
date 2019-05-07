@@ -1,3 +1,4 @@
+const steve = "steve"
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
 const suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
 const deck = [];
@@ -5,10 +6,15 @@ let firstPlayerCard = null;
 let firstBankerCard = null;
 let secondPlayerCard = null;
 let secondBankerCard = null;
+<<<<<<< HEAD
 let thirdPlayerCard = 0;
 let thirdBankerCard = 0;
 let playerTotal = null;
 let bankerTotal = null;
+=======
+let thirdPlayerCard = null;
+let thirdBankerCard = null;
+>>>>>>> 12acc213c2a1b33e9f2eb89221256d907f9e5207
 
 function buildDeck(arr1, arr2) {
   for (let i = 0; i < arr1.length; i+=1) {
@@ -53,6 +59,7 @@ function announceCards() {
   console.log(`Player 1 has ${firstPlayerCard.num} of ${firstPlayerCard.suit} and a ${secondPlayerCard.num} of ${secondPlayerCard.suit}, Player 2 has ${firstBankerCard.num} of ${firstBankerCard.suit} and a ${secondBankerCard.num} of ${secondBankerCard.suit}`);
 }
 
+<<<<<<< HEAD
 function cardToRank(card) {
   if (card.value === 'Ace') {
     return 1
@@ -129,13 +136,18 @@ const bankerthirdCardDraw=() =>{
 //   deck.push(player1Card);
 //   deck.push(player2Card);
 // }
+=======
+>>>>>>> 12acc213c2a1b33e9f2eb89221256d907f9e5207
 
 function playGame() {
   drawCard();
   announceCards();
+<<<<<<< HEAD
   twoHandTotal();
   
 
+=======
+>>>>>>> 12acc213c2a1b33e9f2eb89221256d907f9e5207
   //announceWinner();
  // returnCardsToDeck();
 }
