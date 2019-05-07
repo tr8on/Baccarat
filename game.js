@@ -55,7 +55,7 @@ function announceCards() {
   console.log(`Player 1 has ${firstPlayerCard.num} of ${firstPlayerCard.suit} and a ${secondPlayerCard.num} of ${secondPlayerCard.suit}, Player 2 has ${firstBankerCard.num} of ${firstBankerCard.suit} and a ${secondBankerCard.num} of ${secondBankerCard.suit}`);
 }
 
-<<<<<<< HEAD
+
 function cardToRank(card) {
   if (card.value === 'Ace') {
     return 1
@@ -97,27 +97,36 @@ function twoHandTotal() {
 // If the player has an initial total of 0–5, he draws a third card. If the player has an initial total of 6 or 7, he stands.
 // Banker's rule
 // If the player stood pat (i.e., has only two cards), the banker regards only his own hand and acts according to the same rule as the player. That means the banker draws a third card with hands 0–5 and stands with 6 or 7.   -Baccarat wikipedia 
-    if (playerTotal <= 5){
-      playerthirdCardDraw()
-    }
-    if (bankerTotal <= 5){
-      bankerthirdCardDraw()
-    }
+    if(playerTotal <8 && bankerTotal < 8){  // game rules if player or banker draws an 8 or 9 total on first 2 cards no aditional cards will be drawn
+        if (playerTotal <= 5){
+            playerthirdCardDraw()
+        }
+        if (bankerTotal <= 5){
+            bankerthirdCardDraw()
+        }
+    }else{   
+            //announceWinner();
+        }
 }
-
  const playerthirdCardDraw =()=>{
    let thirdPCardRank = cardToRank(thirdPlayerCard)
    playerTotal += thirdPCardRank;
+   if(playerTotal >=10){
+       playerTotal -= 10
+   }
    console.log(` 3 card player total = ${playerTotal}`)
  }
 const bankerthirdCardDraw=() =>{
   let thirdBCardRank = cardToRank(thirdBankerCard)
    bankerTotal += thirdBCardRank
- console.log(` 3 card player total = ${bankerTotal}`)
+   if(bankerTotal >=10){
+    bankerTotal -= 10
+}
+ console.log(` 3 card banker total = ${bankerTotal}`)
  }
 
  
-// function announceWinner() {
+// const announceWinner=()=> {
 
 //   if (player1Rank > player2Rank) {
 //     console.log('Player 1 Wins')
@@ -128,22 +137,19 @@ const bankerthirdCardDraw=() =>{
 //   }
 // }
 
-// function returnCardsToDeck() {
-//   deck.push(player1Card);
-//   deck.push(player2Card);
-// }
-=======
->>>>>>> 12acc213c2a1b33e9f2eb89221256d907f9e5207
+function returnCardsToDeck() {
+    deck.push(firstPlayerCard);
+    deck.push(firstBankerCard) 
+    deck.push(secondPlayerCard)
+    deck.push(secondBankerCard)
+    deck.push(thirdPlayerCard)
+    deck.push(thirdBankerCard)
+}
 
 function playGame() {
   drawCard();
   announceCards();
-<<<<<<< HEAD
   twoHandTotal();
-  
-
-=======
->>>>>>> 12acc213c2a1b33e9f2eb89221256d907f9e5207
   //announceWinner();
  // returnCardsToDeck();
 }
