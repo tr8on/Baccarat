@@ -1,4 +1,4 @@
-const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
+const values = [2, 3, 4, 5, 6, 7, 8, 9, "10", "Jack", "Queen", "King", "Ace"];
 const suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
 const deck = [];
 let firstPlayerCard = null;
@@ -52,7 +52,7 @@ function drawCard() {
 }
 
 function announceCards() {
-  console.log(`Player 1 has ${firstPlayerCard.num} of ${firstPlayerCard.suit} and a ${secondPlayerCard.num} of ${secondPlayerCard.suit}, Player 2 has ${firstBankerCard.num} of ${firstBankerCard.suit} and a ${secondBankerCard.num} of ${secondBankerCard.suit}`);
+  console.log(`Player has ${firstPlayerCard.num} of ${firstPlayerCard.suit} and a ${secondPlayerCard.num} of ${secondPlayerCard.suit}, Banker has ${firstBankerCard.num} of ${firstBankerCard.suit} and a ${secondBankerCard.num} of ${secondBankerCard.suit}`);
 }
 
 
@@ -67,6 +67,9 @@ function cardToRank(card) {
     return 0
   }
   if (card.value === 'King') {
+    return 0
+  }
+  if (card.value === '10') {
     return 0
   } else {
     return card.value
@@ -105,7 +108,7 @@ function twoHandTotal() {
             bankerthirdCardDraw()
         }
     }else{   
-            //announceWinner();
+            announceWinner();
         }
 }
  const playerthirdCardDraw =()=>{
@@ -113,29 +116,34 @@ function twoHandTotal() {
    playerTotal += thirdPCardRank;
    if(playerTotal >=10){
        playerTotal -= 10
+       announceWinner();
    }
-   console.log(` 3 card player total = ${playerTotal}`)
+   console.log(`Player drew a 3rd card: ${thirdPlayerCard.num} of ${thirdPlayerCard.suit}
+   new  3 card player total = ${playerTotal}`)
  }
 const bankerthirdCardDraw=() =>{
+
   let thirdBCardRank = cardToRank(thirdBankerCard)
    bankerTotal += thirdBCardRank
    if(bankerTotal >=10){
     bankerTotal -= 10
+    announceWinner();
 }
- console.log(` 3 card banker total = ${bankerTotal}`)
+ console.log(`Banker drew a 3rd card: ${thirdBankerCard.num} of ${thirdBankerCard.suit}
+  new 3 card banker total = ${bankerTotal}`)
  }
 
  
-// const announceWinner=()=> {
+const announceWinner=()=> {
 
-//   if (player1Rank > player2Rank) {
-//     console.log('Player 1 Wins')
-//   } else if (player2Rank > player1Rank) {
-//     console.log('Player 2 Wins');
-//   } else {
-//     console.log("It's a draw");
-//   }
-// }
+  if (bankerTotal > playerTotal) {
+    console.log('Player Wins')
+  } else if (bankerTotal < playerTotal) {
+    console.log('Player 2 Wins');
+  } else {
+    console.log("It's a draw");
+  }
+}
 
 function returnCardsToDeck() {
     deck.push(firstPlayerCard);
