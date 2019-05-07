@@ -1,4 +1,3 @@
-const steve = "steve"
 const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "Jack", "Queen", "King", "Ace"];
 const suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
 const deck = [];
@@ -6,15 +5,12 @@ let firstPlayerCard = null;
 let firstBankerCard = null;
 let secondPlayerCard = null;
 let secondBankerCard = null;
-<<<<<<< HEAD
+
 let thirdPlayerCard = 0;
 let thirdBankerCard = 0;
 let playerTotal = null;
 let bankerTotal = null;
-=======
-let thirdPlayerCard = null;
-let thirdBankerCard = null;
->>>>>>> 12acc213c2a1b33e9f2eb89221256d907f9e5207
+
 
 function buildDeck(arr1, arr2) {
   for (let i = 0; i < arr1.length; i+=1) {
