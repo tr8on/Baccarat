@@ -1,0 +1,50 @@
+body {
+    background-image: url("table.jpg");
+  }
+  /* .btn-group button {
+    display: flexbox;
+    flex-direction: column;
+    height: 134px;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    width: 104px;
+  } */
+  .chips {
+
+    object-fit: fill;
+    height: auto; 
+    width: auto; 
+    /* max-width: 50px; 
+    max-height: 50px; */
+}
+#chips5:hover{
+    border: purple;
+    border: 10px;
+}
+#chips10:hover{
+    border: purple;
+    border: 10px;
+}
+#chips20:hover{
+    border: purple;
+    border: 10px;
+}
+.chip{
+    width: 100px;
+    height: 100px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 3px rgb(90, 90, 90) solid;
+    
+}
+.chip:hover{
+    background: red;
+}
+.card {
+    width: 5em;
+    height: 7em;
+    background-image: url(blankcard.png)
+    box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.15);
+    border-radius: 0.25em;
+  }

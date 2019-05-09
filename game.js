@@ -1,4 +1,5 @@
-const values = [2, 3, 4, 5, 6, 7, 8, 9, "10", "Jack", "Queen", "King", "Ace"];
+
+const values = [2, 3, 4, 5, 6, 7, 8, 9, "10", "Jack", "Queen", "King", "Ace"]; //10 and face cards = 0 in game 
 const suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
 const deck = [];
 let firstPlayerCard = null;
@@ -10,8 +11,61 @@ let thirdPlayerCard = 0;
 let thirdBankerCard = 0;
 let playerTotal = null;
 let bankerTotal = null;
+let amountSubmit = document.querySelector('#submit');
+
+let playerBalance = 100
+let amountWon = 0
+let amountLost = 0
+let currentWager = 0
+let h3 = document.querySelector("h3")
+amountSubmit.addEventListener('click', wager);
+//selectside 
+let fiveBet = document.querySelector('#chips5');
+let tenBet = document.querySelector('#chips10')
+let twentyBet = document.querySelector('#chips20')
+fiveBet.addEventListener('click', wagerFive);
+tenBet.addEventListener('click', wagerTen);
+twentyBet.addEventListener('click', wagerTwenty);
 
 
+
+function wagerFive(){
+    
+    if(playerBalance === 0 ){
+        h3.innerHTML = 'Insufficient Funds'
+    }else{
+    currentWager += 5;
+    playerBalance -=5;
+    h3.innerHTML = `Your currently betting $${currentWager} \n Your Balance is now $${playerBalance}`
+    //printcurrent wager
+    }
+}
+function wagerTen(){
+    if(playerBalance < 10){
+        h3.innerHTML = 'Insufficient Funds'
+    }else{
+    currentWager += 10;
+    playerBalance -=10;
+    h3.innerHTML = `Your currently betting $${currentWager} \n Your Balance is now $${playerBalance}`
+    }
+}
+function wagerTwenty(){
+    if(playerBalance  < 20 ){
+        h3.innerHTML = 'Insufficient Funds'
+    }else{
+    currentWager += 20;
+    playerBalance -=20;
+    h3.innerHTML = `Your currently betting $${currentWager} \n Your Balance is now $${playerBalance}`
+    }
+}
+
+function wager (){
+event.preventDefault()
+
+
+
+//eventlistener 
+}
 function buildDeck(arr1, arr2) {
   for (let i = 0; i < arr1.length; i+=1) {
     for (let j = 0; j < arr2.length; j+=1) {
@@ -28,6 +82,8 @@ function buildDeck(arr1, arr2) {
 function shuffle(deck){
 
 }
+
+
 function drawCard() {
   let randomIndex = Math.floor(Math.random() * deck.length);
   let randomIndex2 = Math.floor(Math.random() * deck.length);
@@ -52,9 +108,17 @@ function drawCard() {
 }
 
 function announceCards() {
-  console.log(`Player has ${firstPlayerCard.num} of ${firstPlayerCard.suit} and a ${secondPlayerCard.num} of ${secondPlayerCard.suit}, Banker has ${firstBankerCard.num} of ${firstBankerCard.suit} and a ${secondBankerCard.num} of ${secondBankerCard.suit}`);
-}
+  console.log(`Player has ${firstPlayerCard.num} of 
+  ${firstPlayerCard.suit} and a ${secondPlayerCard.num} of 
+  ${secondPlayerCard.suit}, Banker has ${firstBankerCard.num} of 
+  ${firstBankerCard.suit} and a ${secondBankerCard.num} of ${secondBankerCard.suit}`);
+  twoHandTotal();
 
+  
+}
+function guiCards(){
+    
+}
 
 function cardToRank(card) {
   if (card.value === 'Ace') {
@@ -63,7 +127,7 @@ function cardToRank(card) {
   if (card.value === 'Jack') {
     return 0
   }
-  if (card.value === 'Queen') {
+  if (card.value === 'Queen') {   //game rules facecards and 10 = 0
     return 0
   }
   if (card.value === 'King') {
@@ -82,7 +146,7 @@ function twoHandTotal() {
   let secondPCardRank = cardToRank(secondPlayerCard)
   let secondBCardRank = cardToRank(secondBankerCard)
  
-
+  
   // playerTotal = firstPCardRank + secondPCardRank + thirdPCardRank;
   // bankerTotal = firstBCardRank + secondBCardRank + thirdBCardRank;
   playerTotal = firstPCardRank + secondPCardRank;
@@ -143,6 +207,7 @@ const announceWinner=()=> {
   } else {
     console.log("It's a draw");
   }
+  returnCardsToDeck();
 }
 
 function returnCardsToDeck() {
@@ -155,12 +220,12 @@ function returnCardsToDeck() {
 }
 
 function playGame() {
+  
   drawCard();
   announceCards();
-  twoHandTotal();
-  //announceWinner();
- // returnCardsToDeck();
+
 }
 
 buildDeck(values, suits);
 playGame();
+
