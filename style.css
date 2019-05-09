@@ -1,15 +1,7 @@
 body {
     background-image: url("table.jpg");
   }
-  /* .btn-group button {
-    display: flexbox;
-    flex-direction: column;
-    height: 134px;
-    padding: 0;
-    margin: 0;
-    vertical-align: top;
-    width: 104px;
-  } */
+  
   .chips {
 
     object-fit: fill;
@@ -36,15 +28,129 @@ body {
     background-color: transparent;
     border-radius: 50%;
     border: 3px rgb(90, 90, 90) solid;
+    text-align: center;
+    align-content: center;
     
 }
 .chip:hover{
     background: red;
 }
-.card {
+.playercard {
+    display: inline-block;
     width: 5em;
     height: 7em;
-    background-image: url(blankcard.png)
+    background-image: url(blankcard.png);
     box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.15);
     border-radius: 0.25em;
+    padding: 20px;
+    text-align: left;
+    align-content: center;
+  }
+  .bankercard {
+    display: inline-block;
+    width: 5em;
+    height: 7em;
+    background-image: url(blankcard.png);
+    box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.15);
+    border-radius: 0.25em;
+    padding: 20px;
+    text-align: left;
+    align-content: center;
+    
+  }
+  #cardOne > img{
+      height: 100px;
+      width: 100px;
+      background: transparent;
+      opacity: 0.5;
+      position: absolute;
+  }
+  #cardTwo > img{
+    height: 100px;
+    width: 100px;
+    background: transparent;
+    opacity: 0.5;
+    position: absolute;
+}
+#cardThree > img{
+    height: 100px;
+    width: 100px;
+    background: transparent;
+    opacity: 0.5;
+    position: absolute;
+}
+#cardFour > img{
+    height: 100px;
+    width: 100px;
+    background: transparent;
+    opacity: 0.5;
+    position: absolute;
+}
+#cardFive> img{
+    height: 100px;
+    width: 100px;
+    background: transparent;
+    opacity: 0.5;
+    position: absolute;
+}
+#cardSix> img{
+    height: 100px;
+    width: 100px;
+    background: transparent;
+    opacity: 0.5;
+    position: absolute;
+}
+  #cardOne:before,
+  #cardOne:after{ 
+		content: attr(value);
+		position: absolute;
+		width: 12px;
+		text-align: center;
+		letter-spacing: -2px;
+	
+  }
+  #cardTwo:before,
+  #cardTwo:after{ 
+		content: attr(value);
+		position: absolute;
+		width: 12px;
+		text-align: center;
+		letter-spacing: -2px;
+	
+  }
+  #cardThree:before,
+  #cardThree:after{ 
+		content: attr(value);
+		position: absolute;
+		width: 12px;
+		text-align: center;
+		letter-spacing: -2px;
+	
+  }
+  #cardFour:before,
+  #cardFour:after{ 
+		content: attr(value);
+		position: absolute;
+		width: 12px;
+		text-align: center;
+		letter-spacing: -2px;
+	
+  }
+  #cardFive:before,
+  #cardFive:after{ 
+		content: attr(value);
+		position: absolute;
+		width: 12px;
+		text-align: center;
+		letter-spacing: -2px;
+	
+  }
+  #cardSix:before,
+  #cardSix:after{ 
+		content: attr(value);
+		position: absolute;
+		width: 12px;
+		text-align: center;
+		letter-spacing: -2px;
+	
   }

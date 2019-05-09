@@ -1,5 +1,5 @@
 
-const values = [2, 3, 4, 5, 6, 7, 8, 9, "10", "Jack", "Queen", "King", "Ace"]; //10 and face cards = 0 in game 
+const values = [2, 3, 4, 5, 6, 7, 8, 9, "10", "J", "Q", "K", "A"]; //10 and face cards = 0 in game 
 const suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
 const deck = [];
 let firstPlayerCard = null;
@@ -17,7 +17,8 @@ let playerBalance = 100
 let amountWon = 0
 let amountLost = 0
 let currentWager = 0
-let h3 = document.querySelector("h3")
+let h3 = document.querySelector("h3") //balance/wageramt
+let h1 = document.querySelector("h1") //announce winner 
 amountSubmit.addEventListener('click', wager);
 //selectside 
 let fiveBet = document.querySelector('#chips5');
@@ -26,6 +27,7 @@ let twentyBet = document.querySelector('#chips20')
 fiveBet.addEventListener('click', wagerFive);
 tenBet.addEventListener('click', wagerTen);
 twentyBet.addEventListener('click', wagerTwenty);
+let createCard = [];
 
 
 
@@ -84,6 +86,7 @@ function shuffle(deck){
 }
 
 
+  
 function drawCard() {
   let randomIndex = Math.floor(Math.random() * deck.length);
   let randomIndex2 = Math.floor(Math.random() * deck.length);
@@ -98,39 +101,137 @@ function drawCard() {
   thirdPlayerCard = deck[randomIndex5];
   thirdBankerCard = deck[randomIndex6];
   
-  
+  createCard.push(firstPlayerCard)
+  createCard.push(secondPlayerCard)
+  createCard.push(thirdPlayerCard)// NEED TO POP FROM THIS ARRAY AFTER HAND
+  createCard.push(firstBankerCard)
+  createCard.push(secondBankerCard)
+  createCard.push(thirdBankerCard)
   deck.splice(randomIndex, 1);
   deck.splice(randomIndex2, 1);
   deck.splice(randomIndex3, 1);
   deck.splice(randomIndex4, 1);
   deck.splice(randomIndex5, 1);
   deck.splice(randomIndex6, 1);
+  createCards(randomIndex);
+  createCards(randomIndex2);
+  createCards(randomIndex3);
+  createCards(randomIndex4);
+  //put these in draw 3rd card fcn so they dont pop up when not needed
+  createCards(randomIndex5);
+  createCards(randomIndex6);
+  announceCards();
 }
 
 function announceCards() {
-  console.log(`Player has ${firstPlayerCard.num} of 
+    console.log(`Player has ${firstPlayerCard.num} of 
   ${firstPlayerCard.suit} and a ${secondPlayerCard.num} of 
   ${secondPlayerCard.suit}, Banker has ${firstBankerCard.num} of 
   ${firstBankerCard.suit} and a ${secondBankerCard.num} of ${secondBankerCard.suit}`);
   twoHandTotal();
 
-  
 }
-function guiCards(){
+// let img = document.createElement('img')
+// img.setAttribute("src", "club.png")
+// cardOne.appendChild(img)
+let cardOne = document.getElementById("cardOne")
+let cardTwo = document.getElementById("cardTwo")
+let cardThree = document.getElementById("cardThree")
+let cardFour = document.getElementById("cardFour")
+let cardFive = document.getElementById("cardFive")
+let cardSix = document.getElementById("cardSix")
+
+
+function createCards(){
+    //cardOne.innerHTML = `${createCard[0].num}`
+    // cardTwo.innerHTML = `${createCard[1].num}`
+    // cardFour.innerHTML = `${createCard[3].num}`
+    // cardFive.innerHTML = `${createCard[4].num}`
+    cardOne.setAttribute("value", `${createCard[0].num}` )
+    cardTwo.setAttribute("value", `${createCard[1].num}`)
+    cardFour.setAttribute("value", `${createCard[3].num}`)
+    cardFive.setAttribute("value", `${createCard[4].num}`)
+    createSuit();
     
 }
+let img = document.createElement('img')
+let img2 = document.createElement('img')
+let img3 = document.createElement('img')
+let img4 = document.createElement('img')
+let img5 = document.createElement('img')
+let img6 = document.createElement('img')
+function createSuit(){
+  if (firstPlayerCard.suit === "Clubs"){
+    img.setAttribute("src", "club.png")
+    cardOne.appendChild(img)
+  } else if (firstPlayerCard.suit === "Hearts"){
+    img.setAttribute("src", "heart.png")
+    cardOne.appendChild(img)
+  } else if (firstPlayerCard.suit === "Spades"){
+    img.setAttribute("src", "spade.jpg")
+    cardOne.appendChild(img)
+  }if (firstPlayerCard.suit === "Diamonds"){
+    img.setAttribute("src", "diamond.png")
+    cardOne.appendChild(img)
+  }
+  if (secondPlayerCard.suit === "Clubs"){
+    img2.setAttribute("src", "club.png")
+    cardTwo.appendChild(img2)
+  } else if (secondPlayerCard.suit === "Hearts"){
+    img2.setAttribute("src", "heart.png")
+    cardTwo.appendChild(img2)
+  } else if (secondPlayerCard.suit === "Spades"){
+    img2.setAttribute("src", "spade.jpg")
+    cardTwo.appendChild(img2)
+  }if (secondPlayerCard.suit === "Diamonds"){
+    img2.setAttribute("src", "diamond.png")
+    cardTwo.appendChild(img2)
+  }
+  
+  if (firstBankerCard.suit === "Clubs"){
+    img4.setAttribute("src", "club.png")
+    cardFour.appendChild(img4)
+  } else if (firstBankerCard.suit === "Hearts"){
+    img4.setAttribute("src", "heart.png")
+    cardFour.appendChild(img4)
+  } else if (firstBankerCard.suit === "Spades"){
+    img4.setAttribute("src", "spade.jpg")
+    cardFour.appendChild(img4)
+  }if (firstBankerCard.suit === "Diamonds"){
+    img4.setAttribute("src", "diamond.png")
+    cardFour.appendChild(img4)
+  }
+  if (secondBankerCard.suit === "Clubs"){
+    img5.setAttribute("src", "club.png")
+    cardFive.appendChild(img5)
+  } else if (secondBankerCard.suit === "Hearts"){
+    img5.setAttribute("src", "heart.png")
+    cardFive.appendChild(img5)
+  } else if (secondBankerCard.suit === "Spades"){
+    img5.setAttribute("src", "spade.jpg")
+    cardFive.appendChild(img5)
+  }if (secondBankerCard.suit === "Diamonds"){
+    img5.setAttribute("src", "diamond.png")
+    cardFive.appendChild(img5)
+  }
+  
+  
+// img.setAttribute("src", "club.png")
+// cardOne.appendChild(img)
+}
+
 
 function cardToRank(card) {
-  if (card.value === 'Ace') {
+  if (card.value === 'A') {
     return 1
   }
-  if (card.value === 'Jack') {
+  if (card.value === 'J') {
     return 0
   }
-  if (card.value === 'Queen') {   //game rules facecards and 10 = 0
+  if (card.value === 'Q') {   //game rules facecards and 10 = 0
     return 0
   }
-  if (card.value === 'King') {
+  if (card.value === 'K') {
     return 0
   }
   if (card.value === '10') {
@@ -142,6 +243,7 @@ function cardToRank(card) {
 
 function twoHandTotal() {
   let firstPCardRank = cardToRank(firstPlayerCard)
+
   let firstBCardRank = cardToRank(firstBankerCard)
   let secondPCardRank = cardToRank(secondPlayerCard)
   let secondBCardRank = cardToRank(secondBankerCard)
@@ -158,8 +260,11 @@ function twoHandTotal() {
   if (bankerTotal >= 10){
     bankerTotal -= 10;
   }
-  console.log(playerTotal)
- console.log(bankerTotal)
+  if((playerTotal <8 && bankerTotal < 8) && (playerTotal == bankerTotal)){
+  announceWinner();
+  }
+  console.log(`players Two hand total ${playerTotal}`)
+  console.log(`Bankers Two hand total ${bankerTotal}`)
 // Player's rule
 // If the player has an initial total of 0–5, he draws a third card. If the player has an initial total of 6 or 7, he stands.
 // Banker's rule
@@ -167,9 +272,13 @@ function twoHandTotal() {
     if(playerTotal <8 && bankerTotal < 8){  // game rules if player or banker draws an 8 or 9 total on first 2 cards no aditional cards will be drawn
         if (playerTotal <= 5){
             playerthirdCardDraw()
+        }else{
+            announceWinner();
         }
         if (bankerTotal <= 5){
             bankerthirdCardDraw()
+        }else{
+            announceWinner();
         }
     }else{   
             announceWinner();
@@ -178,10 +287,28 @@ function twoHandTotal() {
  const playerthirdCardDraw =()=>{
    let thirdPCardRank = cardToRank(thirdPlayerCard)
    playerTotal += thirdPCardRank;
+   cardThree.setAttribute("value", `${createCard[2].num}`)
+   if (thirdPlayerCard.suit === "Clubs"){
+    img3.setAttribute("src", "club.png")
+    cardThree.appendChild(img3)
+  } else if (thirdPlayerCard.suit === "Hearts"){
+    img3.setAttribute("src", "heart.png")
+    cardThree.appendChild(img3)
+  } else if (thirdPlayerCard.suit === "Spades"){
+    img3.setAttribute("src", "spade.jpg")
+    cardThree.appendChild(img3)
+  }if (thirdPlayerCard.suit === "Diamonds"){
+    img3.setAttribute("src", "diamond.png")
+    cardThree.appendChild(img3)
+  }
    if(playerTotal >=10){
        playerTotal -= 10
+       console.log(`players 3 hand total ${playerTotal}`)
+  
        announceWinner();
-   }
+   }else{
+    announceWinner()
+    }
    console.log(`Player drew a 3rd card: ${thirdPlayerCard.num} of ${thirdPlayerCard.suit}
    new  3 card player total = ${playerTotal}`)
  }
@@ -189,24 +316,43 @@ const bankerthirdCardDraw=() =>{
 
   let thirdBCardRank = cardToRank(thirdBankerCard)
    bankerTotal += thirdBCardRank
+   cardSix.setAttribute("value", `${createCard[5].num}`)
+   if (thirdBankerCard.suit === "Clubs"){
+    img6.setAttribute("src", "club.png")
+    cardSix.appendChild(img6)
+  } else if (thirdBankerCard.suit === "Hearts"){
+    img6.setAttribute("src", "heart.png")
+    cardSix.appendChild(img6)
+  } else if (thirdBankerCard.suit === "Spades"){
+    img6.setAttribute("src", "spade.jpg")
+    cardSix.appendChild(img6)
+  }if (thirdBankerCard.suit === "Diamonds"){
+    img6.setAttribute("src", "diamond.png")
+    cardSix.appendChild(img6)
+  }
+  
    if(bankerTotal >=10){
-    bankerTotal -= 10
+    bankerTotal -= 10;
+    console.log(`players Two hand total ${bankerTotal}`)
     announceWinner();
-}
+    }else{
+        console.log('tie')
+        announceWinner()
+    }
  console.log(`Banker drew a 3rd card: ${thirdBankerCard.num} of ${thirdBankerCard.suit}
   new 3 card banker total = ${bankerTotal}`)
  }
 
  
 const announceWinner=()=> {
-
+    if(playerTotal === bankerTotal){
+        h1.innerHTML =("It's a draw");
+    }
   if (bankerTotal > playerTotal) {
-    console.log('Player Wins')
+    h1.innerHTML = ('Banker Wins')
   } else if (bankerTotal < playerTotal) {
-    console.log('Player 2 Wins');
-  } else {
-    console.log("It's a draw");
-  }
+     h1.innerHTML =('Player Wins');
+  } 
   returnCardsToDeck();
 }
 
@@ -217,15 +363,15 @@ function returnCardsToDeck() {
     deck.push(secondBankerCard)
     deck.push(thirdPlayerCard)
     deck.push(thirdBankerCard)
+    //createCard = []
 }
 
 function playGame() {
   
   drawCard();
-  announceCards();
+  
 
 }
 
 buildDeck(values, suits);
 playGame();
-
