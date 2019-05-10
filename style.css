@@ -1,6 +1,11 @@
 .game{
     display: none;
 }
+.bac-title{
+    
+    margin-left: 35%;
+    
+}
 body {
     background-image: url("table.jpg");
     
