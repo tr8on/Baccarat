@@ -5,12 +5,46 @@ body {
     background-image: url("table.jpg");
     
   }
+  .card.flipped {
+    -webkit-transform: translateX( -100% ) rotateY( -180deg );
+       -moz-transform: translateX( -100% ) rotateY( -180deg );
+         -o-transform: translateX( -100% ) rotateY( -180deg );
+            transform: translateX( -100% ) rotateY( -180deg );
+  }
+  .head-hand .cardOneBack{
+    -webkit-transform: rotateY( 180deg );
+    -moz-transform: rotateY( 180deg );
+      -o-transform: rotateY( 180deg );
+         transform: rotateY( 180deg );
+         background-image: url("back.png")
+  }
+  .new-game{
+    border: solid black 5px;
+    padding: 10px;
+    border-radius: 15px 15px 15px 15px; 
+    font: white;
+    background-color: rgba(207, 201, 201, 0.6); 
+    display:inline;
+    justify-content: center;
+    text-align: center;
+    /* display: none; */
+    
+  }
+  .new-game:hover{
+    background-color: rgba(207, 201, 201, 0.9); 
+}
   .info{
     background-color: rgba(207, 201, 201, 0.8);
     border-radius: 15px 15px 15px 15px; 
     display: flex;
     justify-content: center;
     
+  }
+  .head-hand .figure{
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+      -o-backface-visibility: hidden;
+         backface-visibility: hidden;
   }
   .bet-player{
     border: solid gold 5px;
@@ -65,7 +99,20 @@ body {
   .head-bank{
     display: flex;
   justify-content: center; 
+  -webkit-transition: -webkit-transform 1s;
+     -moz-transition: -moz-transform 1s;
+       -o-transition: -o-transform 1s;
+          transition: transform 1s;
+  -webkit-transform-style: preserve-3d;
+     -moz-transform-style: preserve-3d;
+       -o-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform-origin: right center;
+     -moz-transform-origin: right center;
+       -o-transform-origin: right center;
+          transform-origin: right center;
 }
+
 .class{
     display: flex;
     justify-content: center;  

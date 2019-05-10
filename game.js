@@ -1,7 +1,7 @@
 
 const values = [2, 3, 4, 5, 6, 7, 8, 9, "10", "J", "Q", "K", "A"]; //10 and face cards = 0 in game 
 const suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
-const deck = [];
+let deck = [];
 let firstPlayerCard = null;
 let firstBankerCard = null;
 let secondPlayerCard = null;
@@ -40,16 +40,40 @@ let submitBet = document.querySelector(".submit-bet")
 submitBet.addEventListener('click', betSubmit);
 let gameVisible = document.querySelector(".game")
 let hideChips = document.querySelector(".btn-group")
+let restartGame = document.querySelector(".new-game")
+// restartGame.addEventListener('click', newGame);
 
+// function newGame(){
+//     if (playerBool === true){
+//         playerBetButton.removeChild(chipStack)
+//     }
+//     if (tieBool === true){
+//         tieBetButton.removeChild(chipStack)
+//     }
+//     if (playerBool === true){
+//         bankerBetButton.removeChild(chipStack)
+//     }
+
+//     playerBool = false;
+//     tieBool = false;
+//     bankerBool = false;
+//     currentWager = 0
+//     createCard = [];
+//     deck = [];
+//     buildDeck(values, suits);
+//     gameVisible.style.display ="none";
+//     h3.style.display = "block";
+//     playGame();
+// }
 function betSubmit(){
     if((playerBool || tieBool || bankerBool === true) && currentWager > 0){
-    h3.style.display = "none"
-    gameVisible.style.display ="contents"
+    h3.style.display = "none";
+    gameVisible.style.display ="contents";
+    //restartGame.style.display ="block";
     hideChips.style.display = "none"
     playGame();
     }
 }
-
 //newgame btn set all bools to false and current wager = 0
 
 function betPlayer(){
@@ -176,9 +200,7 @@ function announceCards() {
   twoHandTotal();
 
 }
-// let img = document.createElement('img')
-// img.setAttribute("src", "club.png")
-// cardOne.appendChild(img)
+
 let cardOne = document.getElementById("cardOne")
 let cardTwo = document.getElementById("cardTwo")
 let cardThree = document.getElementById("cardThree")
