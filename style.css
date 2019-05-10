@@ -51,29 +51,32 @@ body {
     padding: 10px;
     border-radius: 15px 15px 15px 15px; 
     font-size: 85px;
+    background-color: rgba(207, 201, 201, 0.4);
     
   }
   .bet-player:hover{
-    background-color: rgba(207, 201, 201, 0.6);
+    background-color: rgba(207, 201, 201, 0.8);
   }
   .tie-bet:hover{
-    background-color: rgba(207, 201, 201, 0.6);
+    background-color: rgba(207, 201, 201, 0.8);
   }
   .tie-bet{
     border: solid gold 5px;
     padding: 10px;
     border-radius: 15px 15px 15px 15px; 
     font-size: 85px;
+    background-color: rgba(207, 201, 201, 0.4);
     
   }
   .Banker-bet:hover{
-    background-color: rgba(207, 201, 201, 0.6); 
+    background-color: rgba(207, 201, 201, 0.8); 
   }
   .Banker-bet{
     border: solid gold 5px;
     padding: 10px;
     border-radius: 15px 15px 15px 15px; 
     font-size: 85px; 
+    background-color: rgba(207, 201, 201, 0.4);
   }
   #announce-winner{
     display: flex;
