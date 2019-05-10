@@ -13,13 +13,11 @@ let playerTotal = null;
 let bankerTotal = null;
 let amountSubmit = document.querySelector('#submit');
 
-let playerBalance = 100
-let amountWon = 0
-let amountLost = 0
+
 let currentWager = 0
 let h3 = document.querySelector("h3") //balance/wageramt
-let h1 = document.querySelector("h1") //announce winner 
-amountSubmit.addEventListener('click', wager);
+
+// amountSubmit.addEventListener('click', wager);
 //selectside 
 let fiveBet = document.querySelector('#chips5');
 let tenBet = document.querySelector('#chips10')
@@ -28,37 +26,84 @@ fiveBet.addEventListener('click', wagerFive);
 tenBet.addEventListener('click', wagerTen);
 twentyBet.addEventListener('click', wagerTwenty);
 let createCard = [];
+let playerBetButton = document.querySelector(".bet-player")
+let tieBetButton = document.querySelector(".tie-bet")
+let bankerBetButton = document.querySelector(".Banker-bet")
+playerBetButton.addEventListener('click', betPlayer);
+tieBetButton.addEventListener('click', tiePlayer);
+bankerBetButton.addEventListener('click', betBanker);
+let chipStack = document.createElement('img')
+playerBool = false;
+tieBool = false;
+bankerBool = false;
+let submitBet = document.querySelector(".submit-bet")
+submitBet.addEventListener('click', betSubmit);
+let gameVisible = document.querySelector(".game")
+let hideChips = document.querySelector(".btn-group")
 
+function betSubmit(){
+    if((playerBool || tieBool || bankerBool === true) && currentWager > 0){
+    h3.style.display = "none"
+    gameVisible.style.display ="contents"
+    hideChips.style.display = "none"
+    playGame();
+    }
+}
 
+//newgame btn set all bools to false and current wager = 0
+
+function betPlayer(){
+    chipStack.setAttribute("src", "stack.png")
+    chipStack.style.height = '100px';
+    chipStack.style.width = '100px';
+    playerBetButton.appendChild(chipStack)
+    playerBool = true;
+    tieBool = false;
+    bankerBool = false;
+}
+function tiePlayer(){
+    chipStack.setAttribute("src", "stack.png")
+    chipStack.style.height = '100px';
+    chipStack.style.width = '100px';
+    tieBetButton.appendChild(chipStack)
+    playerBool = false;
+    tieBool = true;
+    bankerBool = false;
+}
+function betBanker(){
+    chipStack.setAttribute("src", "stack.png")
+    chipStack.style.height = '100px';
+    chipStack.style.width = '100px';
+    bankerBetButton.appendChild(chipStack)
+    playerBool = false;
+    tieBool = false;
+    bankerBool = true;
+}
+
+// pick who u want to bet on /3 and place bet on same page
+//visibitlity displaynone
+//dfn button div 
+//create div variable class = game to make invisible 
+//event listener for all 3 buttons player banker tie eventlistener('click, seperatefcn to display)
+//to display them set class = game to visible and hide all buttons 
 
 function wagerFive(){
     
-    if(playerBalance === 0 ){
-        h3.innerHTML = 'Insufficient Funds'
-    }else{
+   
     currentWager += 5;
-    playerBalance -=5;
-    h3.innerHTML = `Your currently betting $${currentWager} \n Your Balance is now $${playerBalance}`
+    h3.innerHTML = `Your currently betting $${currentWager}`
     //printcurrent wager
-    }
+    
 }
 function wagerTen(){
-    if(playerBalance < 10){
-        h3.innerHTML = 'Insufficient Funds'
-    }else{
     currentWager += 10;
-    playerBalance -=10;
-    h3.innerHTML = `Your currently betting $${currentWager} \n Your Balance is now $${playerBalance}`
-    }
+    h3.innerHTML = `Your currently betting $${currentWager}`
+    
 }
 function wagerTwenty(){
-    if(playerBalance  < 20 ){
-        h3.innerHTML = 'Insufficient Funds'
-    }else{
+    
     currentWager += 20;
-    playerBalance -=20;
-    h3.innerHTML = `Your currently betting $${currentWager} \n Your Balance is now $${playerBalance}`
-    }
+    h3.innerHTML = `Your currently betting $${currentWager}`
 }
 
 function wager (){
@@ -263,8 +308,7 @@ function twoHandTotal() {
   if((playerTotal <8 && bankerTotal < 8) && (playerTotal == bankerTotal)){
   announceWinner();
   }
-  console.log(`players Two hand total ${playerTotal}`)
-  console.log(`Bankers Two hand total ${bankerTotal}`)
+  
 // Player's rule
 // If the player has an initial total of 0–5, he draws a third card. If the player has an initial total of 6 or 7, he stands.
 // Banker's rule
@@ -343,15 +387,33 @@ const bankerthirdCardDraw=() =>{
   new 3 card banker total = ${bankerTotal}`)
  }
 
- 
+ let h1 = document.getElementById("announce-winner") //announce winner 
 const announceWinner=()=> {
     if(playerTotal === bankerTotal){
-        h1.innerHTML =("It's a draw");
+        
+        if (tieBool === true){
+            currentWager = currentWager * 8;
+            h1.innerHTML = `It's a draw You Won $${currentWager}`
+        }else{
+            h1.innerHTML = `It's a draw You lost $${currentWager}`
+        }
     }
   if (bankerTotal > playerTotal) {
-    h1.innerHTML = ('Banker Wins')
+      if (bankerBool === true){
+          currentWager = currentWager + currentWager;
+          h1.innerHTML = `Banker Wins You Won $${currentWager}`
+      }else{
+        h1.innerHTML = `Banker Wins You Lost $${currentWager}`
+      }
+    
   } else if (bankerTotal < playerTotal) {
-     h1.innerHTML =('Player Wins');
+      if (playerBool === true){
+        currentWager = currentWager + currentWager
+        h1.innerHTML = `Player Wins You Won $${currentWager}`
+      }else{
+        h1.innerHTML = `Player Wins You Lost $${currentWager}`
+      }
+     
   } 
   returnCardsToDeck();
 }
@@ -374,4 +436,4 @@ function playGame() {
 }
 
 buildDeck(values, suits);
-playGame();
+

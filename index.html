@@ -8,33 +8,53 @@
     <title>Baccarat</title>
 </head>
 <body>
-    <form id = "wagerAmount" >
-        
-      
+   
+    <div class = p-t-b>
+        <h1 class = "bet-player">PLAYER</h1>
+        <h1 class = "tie-bet">TIE</h1>
+        <h1 class = "Banker-bet">BANKER</h1>
+    </div>
+    <h3 class = "info"> To Begin Click a Side to Wager on & Set Your Bet Amount By Clicking the Chips</h3>
+    <h3 class = "bet-info" style = "color: white"> </h3>
+<div class="btn-group">
+    <img src=  "5chip.jpg" alt="Avatar" class= "chip" id = "chips5">
+    <img src=  "10chip.jpg" alt="Avatar" class= "chip" id = "chips10">
+    <img src=  "20chip.jpg" alt="Avatar" class= "chip" id = "chips20">
+    <h3 class = "submit-bet">Sumbit Bet</h3>
+  </div>
+</div>
+       
+      <div class= "game" >
       </form>
-      <div> 
-            <h2>Player's Hand</h2>
+      <div>
+          <div class = pb-hands>
+              <div>
+      <h2 class = "player-hand">Player's Hand</h2>
+      <div class = "head-hand"> 
+            
             <div class="playercard" id = "cardOne" value = "" ></div>
             <div class="playercard" id = "cardTwo" value = "" ></div>
             <div class="playercard" id = "cardThree" value = "" ></div> 
-           
-          <div>
-        <h2>Banker's Hand</h2>
+        </div>
+    </div>
+    <div class = "space"></div>
+          <div >
+        <h2 class = "banker-hand">Banker's Hand</h2>
+        <div class = "head-bank">
           <div class="bankercard" id = "cardFour"  value = "" ></div>
           <div class="bankercard" id = "cardFive" value = "" ></div>
           <div class="bankercard" id = "cardSix" value = "" ></div>
         </div>
-     <h1></h1>
-      <h3 style = "color: white"> </h3>
-<div class="btn-group">
-        <input id= "submit" type = "submit"  />
-    <img src=  "5chip.jpg" alt="Avatar" class= "chip" id = "chips5">
-    <img src=  "10chip.jpg" alt="Avatar" class= "chip" id = "chips10">
-    <img src=  "20chip.jpg" alt="Avatar" class= "chip" id = "chips20">
-  </div>
-  
+        </div>
+    </div>
+</div>
 
-
+    <!-- <div class="chip-buttons"> -->
+     <h1 class = "result"></h1>
+      
+<!-- </div> -->
+<h1 id = "announce-winner">And the Winner is</h1>
+</div>
       <script src="game.js" ></script>
 </body>
 </html>
