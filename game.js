@@ -6,19 +6,13 @@ let firstPlayerCard = null;
 let firstBankerCard = null;
 let secondPlayerCard = null;
 let secondBankerCard = null;
-
 let thirdPlayerCard = 0;
 let thirdBankerCard = 0;
 let playerTotal = null;
 let bankerTotal = null;
 let amountSubmit = document.querySelector('#submit');
-
-
 let currentWager = 0
 let h3 = document.querySelector("h3") //balance/wageramt
-
-// amountSubmit.addEventListener('click', wager);
-//selectside 
 let fiveBet = document.querySelector('#chips5');
 let tenBet = document.querySelector('#chips10')
 let twentyBet = document.querySelector('#chips20')
@@ -41,30 +35,7 @@ submitBet.addEventListener('click', betSubmit);
 let gameVisible = document.querySelector(".game")
 let hideChips = document.querySelector(".btn-group")
 let restartGame = document.querySelector(".new-game")
-// restartGame.addEventListener('click', newGame);
 
-// function newGame(){
-//     if (playerBool === true){
-//         playerBetButton.removeChild(chipStack)
-//     }
-//     if (tieBool === true){
-//         tieBetButton.removeChild(chipStack)
-//     }
-//     if (playerBool === true){
-//         bankerBetButton.removeChild(chipStack)
-//     }
-
-//     playerBool = false;
-//     tieBool = false;
-//     bankerBool = false;
-//     currentWager = 0
-//     createCard = [];
-//     deck = [];
-//     buildDeck(values, suits);
-//     gameVisible.style.display ="none";
-//     h3.style.display = "block";
-//     playGame();
-// }
 function betSubmit(){
     if((playerBool || tieBool || bankerBool === true) && currentWager > 0){
     h3.style.display = "none";
@@ -74,8 +45,6 @@ function betSubmit(){
     playGame();
     }
 }
-//newgame btn set all bools to false and current wager = 0
-
 function betPlayer(){
     chipStack.setAttribute("src", "stack.png")
     chipStack.style.height = '100px';
@@ -104,38 +73,21 @@ function betBanker(){
     bankerBool = true;
 }
 
-// pick who u want to bet on /3 and place bet on same page
-//visibitlity displaynone
-//dfn button div 
-//create div variable class = game to make invisible 
-//event listener for all 3 buttons player banker tie eventlistener('click, seperatefcn to display)
-//to display them set class = game to visible and hide all buttons 
-
 function wagerFive(){
-    
-   
     currentWager += 5;
-    h3.innerHTML = `Your currently betting $${currentWager}`
-    //printcurrent wager
-    
+    h3.innerHTML = `Your currently betting $${currentWager}`  
 }
 function wagerTen(){
     currentWager += 10;
     h3.innerHTML = `Your currently betting $${currentWager}`
-    
 }
 function wagerTwenty(){
-    
     currentWager += 20;
     h3.innerHTML = `Your currently betting $${currentWager}`
 }
 
 function wager (){
 event.preventDefault()
-
-
-
-//eventlistener 
 }
 function buildDeck(arr1, arr2) {
   for (let i = 0; i < arr1.length; i+=1) {
@@ -153,9 +105,6 @@ function buildDeck(arr1, arr2) {
 function shuffle(deck){
 
 }
-
-
-  
 function drawCard() {
   let randomIndex = Math.floor(Math.random() * deck.length);
   let randomIndex2 = Math.floor(Math.random() * deck.length);
@@ -210,16 +159,11 @@ let cardSix = document.getElementById("cardSix")
 
 
 function createCards(){
-    //cardOne.innerHTML = `${createCard[0].num}`
-    // cardTwo.innerHTML = `${createCard[1].num}`
-    // cardFour.innerHTML = `${createCard[3].num}`
-    // cardFive.innerHTML = `${createCard[4].num}`
     cardOne.setAttribute("value", `${createCard[0].num}` )
     cardTwo.setAttribute("value", `${createCard[1].num}`)
     cardFour.setAttribute("value", `${createCard[3].num}`)
     cardFive.setAttribute("value", `${createCard[4].num}`)
     createSuit();
-    
 }
 let img = document.createElement('img')
 let img2 = document.createElement('img')
@@ -281,10 +225,6 @@ function createSuit(){
     img5.setAttribute("src", "diamond.png")
     cardFive.appendChild(img5)
   }
-  
-  
-// img.setAttribute("src", "club.png")
-// cardOne.appendChild(img)
 }
 
 
@@ -310,14 +250,9 @@ function cardToRank(card) {
 
 function twoHandTotal() {
   let firstPCardRank = cardToRank(firstPlayerCard)
-
   let firstBCardRank = cardToRank(firstBankerCard)
   let secondPCardRank = cardToRank(secondPlayerCard)
   let secondBCardRank = cardToRank(secondBankerCard)
- 
-  
-  // playerTotal = firstPCardRank + secondPCardRank + thirdPCardRank;
-  // bankerTotal = firstBCardRank + secondBCardRank + thirdBCardRank;
   playerTotal = firstPCardRank + secondPCardRank;
   bankerTotal = firstBCardRank + secondBCardRank;
 
